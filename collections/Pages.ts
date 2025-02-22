@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload";
-import { CallToActionBlock, ImageBlock, RichTextBlock } from "./Blocks";
+import { cardBlock } from "../blocks/cardBlock";
+import { infoBlock } from "../blocks/infoBlock";
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -28,7 +29,7 @@ export const Pages: CollectionConfig = {
     {
       name: "content",
       type: "blocks",
-      blocks: [RichTextBlock, ImageBlock, CallToActionBlock],
+      blocks: [cardBlock, infoBlock],
       required: true,
     },
     {

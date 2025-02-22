@@ -1,7 +1,15 @@
 import { notFound } from "next/navigation";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
-import type { Page, Media } from "../../../payload-types";
+import type { Page } from "../../../payload-types";
+import CardBlock from "@/components/blocks/CardBlock";
+import InfoBlock from "@/components/blocks/InfoBlock";
+
+// define block types
+type Block = {
+  blockType: string;
+  [key: string]: any;
+};
 
 // this renders a page based on the slug from the url
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -36,57 +44,38 @@ export default async function Page({ params }: { params: { slug: string } }) {
       },
     });
 
+    console.log("Page query result:", pageQuery);
+
     // if no page found, show 404
     if (!pageQuery.docs[0]) {
+      console.log("No page found with slug:", slug);
       return notFound();
     }
 
     const page = pageQuery.docs[0] as Page;
+    console.log("Found page:", { title: page.title, status: page.status });
 
     return (
       <div className="page-content">
         <h1>{page.title}</h1>
 
         {/* render blocks based on their type */}
-        {page.content?.map((block, i) => {
+        {page.content?.map((block: Block, i) => {
           switch (block.blockType) {
-            case "rich-text":
-              return (
-                <div
-                  key={i}
-                  dangerouslySetInnerHTML={{ __html: block.content }}
-                />
-              );
-            case "image": {
-              const imageUrl =
-                typeof block.image === "string"
-                  ? block.image
-                  : (block.image as Media).url;
-              return (
-                <figure key={i}>
-                  {/* @ts-ignore - we know this is safe as we're defaulting to empty string */}
-                  <img src={imageUrl} alt={block.caption || ""} />
-                  {block.caption && <figcaption>{block.caption}</figcaption>}
-                </figure>
-              );
-            }
-            case "call-to-action":
-              return (
-                <div key={i} className="cta-block">
-                  <h2>{block.heading}</h2>
-                  <a href={block.buttonLink} className="cta-button">
-                    {block.buttonText}
-                  </a>
-                </div>
-              );
+            case "cardBlock":
+              return <CardBlock key={i} block={block} />;
+            case "infoBlock":
+              return <InfoBlock key={i} block={block} />;
             default:
+              console.log("Unknown block type:", block.blockType);
               return null;
           }
         })}
       </div>
     );
   } catch (error) {
-    // silently return 404 without logging the error
+    // log the error but still return 404
+    console.error("Error fetching page:", error);
     return notFound();
   }
 }

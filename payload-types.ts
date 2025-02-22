@@ -69,6 +69,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    blocks: Block;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -78,6 +79,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    blocks: BlocksSelect<false> | BlocksSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -161,7 +163,47 @@ export interface Page {
    * this is the url-friendly name that will be used in the page url
    */
   slug: string;
-  content: (RichTextBlock | ImageBlock | CallToActionBlock)[];
+  content: (
+    | {
+        blockName: string | null;
+        blockStyles?: {
+          padding?: ('none' | 'small' | 'medium' | 'large') | null;
+          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
+          textColor?: ('dark' | 'light' | 'primary') | null;
+        };
+        cards: {
+          image: string | Media;
+          title: string;
+          description?: string | null;
+          link: {
+            text: string;
+            url: string;
+          };
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockType: 'cardBlock';
+      }
+    | {
+        blockName: string | null;
+        blockStyles?: {
+          padding?: ('none' | 'small' | 'medium' | 'large') | null;
+          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
+          textColor?: ('dark' | 'light' | 'primary') | null;
+        };
+        heading: string;
+        subheading?: string | null;
+        content: string;
+        layout?: ('left' | 'right' | 'center') | null;
+        media?: (string | null) | Media;
+        callToAction?: {
+          text?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockType: 'infoBlock';
+      }
+  )[];
   meta?: {
     description?: string | null;
     keywords?: string | null;
@@ -172,50 +214,54 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "RichTextBlock".
+ * via the `definition` "blocks".
  */
-export interface RichTextBlock {
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'rich-text';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageBlock".
- */
-export interface ImageBlock {
-  image: string | Media;
-  caption?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'image';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock".
- */
-export interface CallToActionBlock {
-  heading: string;
-  buttonText: string;
-  buttonLink: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'call-to-action';
+export interface Block {
+  id: string;
+  title: string;
+  blockType: (
+    | {
+        blockName: string | null;
+        blockStyles?: {
+          padding?: ('none' | 'small' | 'medium' | 'large') | null;
+          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
+          textColor?: ('dark' | 'light' | 'primary') | null;
+        };
+        cards: {
+          image: string | Media;
+          title: string;
+          description?: string | null;
+          link: {
+            text: string;
+            url: string;
+          };
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockType: 'cardBlock';
+      }
+    | {
+        blockName: string | null;
+        blockStyles?: {
+          padding?: ('none' | 'small' | 'medium' | 'large') | null;
+          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
+          textColor?: ('dark' | 'light' | 'primary') | null;
+        };
+        heading: string;
+        subheading?: string | null;
+        content: string;
+        layout?: ('left' | 'right' | 'center') | null;
+        media?: (string | null) | Media;
+        callToAction?: {
+          text?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockType: 'infoBlock';
+      }
+  )[];
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -235,6 +281,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'blocks';
+        value: string | Block;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -321,9 +371,57 @@ export interface PagesSelect<T extends boolean = true> {
   content?:
     | T
     | {
-        'rich-text'?: T | RichTextBlockSelect<T>;
-        image?: T | ImageBlockSelect<T>;
-        'call-to-action'?: T | CallToActionBlockSelect<T>;
+        cardBlock?:
+          | T
+          | {
+              blockName?: T;
+              blockStyles?:
+                | T
+                | {
+                    padding?: T;
+                    backgroundColor?: T;
+                    textColor?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    link?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+            };
+        infoBlock?:
+          | T
+          | {
+              blockName?: T;
+              blockStyles?:
+                | T
+                | {
+                    padding?: T;
+                    backgroundColor?: T;
+                    textColor?: T;
+                  };
+              heading?: T;
+              subheading?: T;
+              content?: T;
+              layout?: T;
+              media?: T;
+              callToAction?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                  };
+              id?: T;
+            };
       };
   meta?:
     | T
@@ -337,33 +435,67 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "RichTextBlock_select".
+ * via the `definition` "blocks_select".
  */
-export interface RichTextBlockSelect<T extends boolean = true> {
-  content?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageBlock_select".
- */
-export interface ImageBlockSelect<T extends boolean = true> {
-  image?: T;
-  caption?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock_select".
- */
-export interface CallToActionBlockSelect<T extends boolean = true> {
-  heading?: T;
-  buttonText?: T;
-  buttonLink?: T;
-  id?: T;
-  blockName?: T;
+export interface BlocksSelect<T extends boolean = true> {
+  title?: T;
+  blockType?:
+    | T
+    | {
+        cardBlock?:
+          | T
+          | {
+              blockName?: T;
+              blockStyles?:
+                | T
+                | {
+                    padding?: T;
+                    backgroundColor?: T;
+                    textColor?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    link?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+            };
+        infoBlock?:
+          | T
+          | {
+              blockName?: T;
+              blockStyles?:
+                | T
+                | {
+                    padding?: T;
+                    backgroundColor?: T;
+                    textColor?: T;
+                  };
+              heading?: T;
+              subheading?: T;
+              content?: T;
+              layout?: T;
+              media?: T;
+              callToAction?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                  };
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

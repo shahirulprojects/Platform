@@ -1,61 +1,27 @@
-import { Block } from "payload";
+import { CollectionConfig } from "payload";
+import { cardBlock } from "../blocks/cardBlock";
+import { infoBlock } from "../blocks/infoBlock";
 
-// define our block types
-export const RichTextBlock: Block = {
-  slug: "rich-text",
-  interfaceName: "RichTextBlock",
+// collection to manage all block types
+export const Blocks: CollectionConfig = {
+  slug: "blocks",
+  admin: {
+    useAsTitle: "title",
+  },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
-      name: "content",
-      type: "richText",
+      name: "title",
+      type: "text",
       required: true,
+    },
+    {
+      name: "blockType",
+      type: "blocks",
+      required: true,
+      blocks: [cardBlock, infoBlock],
     },
   ],
-};
-
-export const ImageBlock: Block = {
-  slug: "image",
-  interfaceName: "ImageBlock",
-  fields: [
-    {
-      name: "image",
-      type: "upload",
-      relationTo: "media",
-      required: true,
-    },
-    {
-      name: "caption",
-      type: "text",
-      required: false,
-    },
-  ],
-};
-
-export const CallToActionBlock: Block = {
-  slug: "call-to-action",
-  interfaceName: "CallToActionBlock",
-  fields: [
-    {
-      name: "heading",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "buttonText",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "buttonLink",
-      type: "text",
-      required: true,
-    },
-  ],
-};
-
-// export all blocks for easy access
-export const Blocks = {
-  RichTextBlock,
-  ImageBlock,
-  CallToActionBlock,
 };
