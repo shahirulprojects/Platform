@@ -44,19 +44,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
       },
     });
 
-    console.log("Page query result:", pageQuery);
-
     // if no page found, show 404
     if (!pageQuery.docs[0]) {
-      console.log("No page found with slug:", slug);
       return notFound();
     }
 
     const page = pageQuery.docs[0] as Page;
-    console.log("Found page:", { title: page.title, status: page.status });
 
     return (
-      <div className="page-content">
+      <div>
         <h1>{page.title}</h1>
 
         {/* render blocks based on their type */}
@@ -67,15 +63,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
             case "infoBlock":
               return <InfoBlock key={i} block={block} />;
             default:
-              console.log("Unknown block type:", block.blockType);
               return null;
           }
         })}
       </div>
     );
   } catch (error) {
-    // log the error but still return 404
-    console.error("Error fetching page:", error);
     return notFound();
   }
 }

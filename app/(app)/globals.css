@@ -53,6 +53,9 @@
     --chart-5: 27 87% 67%;
 
     --radius: 0.5rem;
+
+    --font-geist-sans: var(--font-geist-sans);
+    --font-geist-mono: var(--font-geist-mono);
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -111,6 +114,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    font-family: var(--font-geist-sans);
   }
 }
 

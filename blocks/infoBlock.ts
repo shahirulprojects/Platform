@@ -25,16 +25,6 @@ export const infoBlock: Block = {
       required: true,
     },
     {
-      name: "layout",
-      type: "select",
-      defaultValue: "left",
-      options: [
-        { label: "Content Left", value: "left" },
-        { label: "Content Right", value: "right" },
-        { label: "Content Center", value: "center" },
-      ],
-    },
-    {
       name: "media",
       type: "upload",
       relationTo: "media",

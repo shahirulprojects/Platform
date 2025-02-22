@@ -67,12 +67,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* add some basic styles for the page content */
-.page-content {
-  @apply container mx-auto px-4 py-8;
-}
-
-.page-content h1 {
-  @apply text-4xl font-bold mb-8 text-center;
-}

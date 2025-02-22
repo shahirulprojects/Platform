@@ -166,11 +166,6 @@ export interface Page {
   content: (
     | {
         blockName: string | null;
-        blockStyles?: {
-          padding?: ('none' | 'small' | 'medium' | 'large') | null;
-          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
-          textColor?: ('dark' | 'light' | 'primary') | null;
-        };
         cards: {
           image: string | Media;
           title: string;
@@ -186,15 +181,9 @@ export interface Page {
       }
     | {
         blockName: string | null;
-        blockStyles?: {
-          padding?: ('none' | 'small' | 'medium' | 'large') | null;
-          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
-          textColor?: ('dark' | 'light' | 'primary') | null;
-        };
         heading: string;
         subheading?: string | null;
         content: string;
-        layout?: ('left' | 'right' | 'center') | null;
         media?: (string | null) | Media;
         callToAction?: {
           text?: string | null;
@@ -222,11 +211,6 @@ export interface Block {
   blockType: (
     | {
         blockName: string | null;
-        blockStyles?: {
-          padding?: ('none' | 'small' | 'medium' | 'large') | null;
-          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
-          textColor?: ('dark' | 'light' | 'primary') | null;
-        };
         cards: {
           image: string | Media;
           title: string;
@@ -242,15 +226,9 @@ export interface Block {
       }
     | {
         blockName: string | null;
-        blockStyles?: {
-          padding?: ('none' | 'small' | 'medium' | 'large') | null;
-          backgroundColor?: ('white' | 'gray-100' | 'gray-800' | 'primary') | null;
-          textColor?: ('dark' | 'light' | 'primary') | null;
-        };
         heading: string;
         subheading?: string | null;
         content: string;
-        layout?: ('left' | 'right' | 'center') | null;
         media?: (string | null) | Media;
         callToAction?: {
           text?: string | null;
@@ -375,13 +353,6 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               blockName?: T;
-              blockStyles?:
-                | T
-                | {
-                    padding?: T;
-                    backgroundColor?: T;
-                    textColor?: T;
-                  };
               cards?:
                 | T
                 | {
@@ -402,17 +373,9 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               blockName?: T;
-              blockStyles?:
-                | T
-                | {
-                    padding?: T;
-                    backgroundColor?: T;
-                    textColor?: T;
-                  };
               heading?: T;
               subheading?: T;
               content?: T;
-              layout?: T;
               media?: T;
               callToAction?:
                 | T
@@ -446,13 +409,6 @@ export interface BlocksSelect<T extends boolean = true> {
           | T
           | {
               blockName?: T;
-              blockStyles?:
-                | T
-                | {
-                    padding?: T;
-                    backgroundColor?: T;
-                    textColor?: T;
-                  };
               cards?:
                 | T
                 | {
@@ -473,17 +429,9 @@ export interface BlocksSelect<T extends boolean = true> {
           | T
           | {
               blockName?: T;
-              blockStyles?:
-                | T
-                | {
-                    padding?: T;
-                    backgroundColor?: T;
-                    textColor?: T;
-                  };
               heading?: T;
               subheading?: T;
               content?: T;
-              layout?: T;
               media?: T;
               callToAction?:
                 | T
