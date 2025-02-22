@@ -69,7 +69,6 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
-    blocks: Block;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,7 +78,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    blocks: BlocksSelect<false> | BlocksSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -203,46 +201,6 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blocks".
- */
-export interface Block {
-  id: string;
-  title: string;
-  blockType: (
-    | {
-        blockName: string | null;
-        cards: {
-          image: string | Media;
-          title: string;
-          description?: string | null;
-          link: {
-            text: string;
-            url: string;
-          };
-          id?: string | null;
-        }[];
-        id?: string | null;
-        blockType: 'cardBlock';
-      }
-    | {
-        blockName: string | null;
-        heading: string;
-        subheading?: string | null;
-        content: string;
-        media?: (string | null) | Media;
-        callToAction?: {
-          text?: string | null;
-          url?: string | null;
-        };
-        id?: string | null;
-        blockType: 'infoBlock';
-      }
-  )[];
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -259,10 +217,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
-      } | null)
-    | ({
-        relationTo: 'blocks';
-        value: string | Block;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -393,55 +347,6 @@ export interface PagesSelect<T extends boolean = true> {
         keywords?: T;
       };
   status?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blocks_select".
- */
-export interface BlocksSelect<T extends boolean = true> {
-  title?: T;
-  blockType?:
-    | T
-    | {
-        cardBlock?:
-          | T
-          | {
-              blockName?: T;
-              cards?:
-                | T
-                | {
-                    image?: T;
-                    title?: T;
-                    description?: T;
-                    link?:
-                      | T
-                      | {
-                          text?: T;
-                          url?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-            };
-        infoBlock?:
-          | T
-          | {
-              blockName?: T;
-              heading?: T;
-              subheading?: T;
-              content?: T;
-              media?: T;
-              callToAction?:
-                | T
-                | {
-                    text?: T;
-                    url?: T;
-                  };
-              id?: T;
-            };
-      };
   updatedAt?: T;
   createdAt?: T;
 }
