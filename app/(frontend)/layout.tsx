@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your App",
-  description: "Your app description",
+  title: "The Great Great Company",
+  description: "The Great Great Company is a company that makes great products",
 };
 
 export default function RootLayout({
@@ -25,7 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} relative  flex justify-center items-center flex-col overflow-x-hidden mx-auto sm:px-10 px-5 w-full`}
+    >
       <body>{children}</body>
     </html>
   );
