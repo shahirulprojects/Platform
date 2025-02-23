@@ -31,9 +31,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <link rel="icon" href="/jsm-logo.png" sizes="any" />
-      </head>
       <body>
         <ThemeProvider
           attribute="class"
@@ -41,7 +38,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
+            <div className="max-w-7xl w-full">{children}</div>
+          </main>
         </ThemeProvider>
       </body>
     </html>

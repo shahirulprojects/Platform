@@ -4,7 +4,8 @@ import configPromise from "@payload-config";
 import type { Page } from "../../../payload-types";
 import CardBlock from "@/components/blocks/CardBlock";
 import InfoBlock from "@/components/blocks/InfoBlock";
-
+import TextBlock from "@/components/blocks/TextBlock";
+import ProjectBlock from "@/components/blocks/ProjectBlock";
 // define block types
 type Block = {
   blockType: string;
@@ -52,20 +53,31 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const page = pageQuery.docs[0] as Page;
 
     return (
-      <div>
-        <h1>{page.title}</h1>
+      <div className="min-h-screen p-10 w-full">
+        <h1 className="text-purple text-5xl font-bold mt-10">{page.title}</h1>
 
         {/* render blocks based on their type */}
-        {page.content?.map((block: Block, i) => {
-          switch (block.blockType) {
-            case "cardBlock":
-              return <CardBlock key={i} block={block} />;
-            case "infoBlock":
-              return <InfoBlock key={i} block={block} />;
-            default:
-              return null;
-          }
-        })}
+        <div className="flex flex-wrap items-center justify-center gap-10">
+          {page.content?.map((block: Block, i) => {
+            switch (block.blockType) {
+              case "textBlock":
+                return <TextBlock key={i} block={block} />;
+              case "cardBlock":
+                return <CardBlock key={i} block={block} />;
+              case "infoBlock":
+                return <InfoBlock key={i} block={block} />;
+              case "projectBlock":
+                return <ProjectBlock key={i} block={block} />;
+              default:
+                return null;
+            }
+          })}
+        </div>
+        <div className="flex mt-16  justify-center">
+          <p className="md:text-base text-sm md:font-normal font-light text-white">
+            Copyright © 2025 The Great Great Company
+          </p>
+        </div>
       </div>
     );
   } catch (error) {

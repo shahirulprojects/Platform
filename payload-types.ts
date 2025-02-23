@@ -165,13 +165,24 @@ export interface Page {
     | {
         blockName: string | null;
         cards: {
-          image: string | Media;
           title: string;
-          description?: string | null;
-          link: {
-            text: string;
-            url: string;
-          };
+          description: string;
+          order: string;
+          backgroundColor: string;
+          animationSpeed: number;
+          animationColors?:
+            | {
+                color?:
+                  | {
+                      r?: number | null;
+                      g?: number | null;
+                      b?: number | null;
+                      id?: string | null;
+                    }[]
+                  | null;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[];
         id?: string | null;
@@ -189,6 +200,40 @@ export interface Page {
         };
         id?: string | null;
         blockType: 'infoBlock';
+      }
+    | {
+        content: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'textBlock';
+      }
+    | {
+        /**
+         * the name of the project
+         */
+        title: string;
+        /**
+         * brief description of the project
+         */
+        description: string;
+        /**
+         * main project image that appears in the center
+         */
+        projectImage: string | Media;
+        /**
+         * list of technology icons used in the project
+         */
+        technologyIcons: {
+          icon: string | Media;
+          id?: string | null;
+        }[];
+        /**
+         * URL to the live project
+         */
+        liveSiteUrl: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'projectBlock';
       }
   )[];
   meta?: {
@@ -310,14 +355,23 @@ export interface PagesSelect<T extends boolean = true> {
               cards?:
                 | T
                 | {
-                    image?: T;
                     title?: T;
                     description?: T;
-                    link?:
+                    order?: T;
+                    backgroundColor?: T;
+                    animationSpeed?: T;
+                    animationColors?:
                       | T
                       | {
-                          text?: T;
-                          url?: T;
+                          color?:
+                            | T
+                            | {
+                                r?: T;
+                                g?: T;
+                                b?: T;
+                                id?: T;
+                              };
+                          id?: T;
                         };
                     id?: T;
                   };
@@ -338,6 +392,29 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                   };
               id?: T;
+            };
+        textBlock?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+        projectBlock?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              projectImage?: T;
+              technologyIcons?:
+                | T
+                | {
+                    icon?: T;
+                    id?: T;
+                  };
+              liveSiteUrl?: T;
+              id?: T;
+              blockName?: T;
             };
       };
   meta?:

@@ -1,9 +1,10 @@
 import React from "react";
 import CardBlock from "./CardBlock";
 import InfoBlock from "./InfoBlock";
-
+import TextBlock from "./TextBlock";
+import ProjectBlock from "./ProjectBlock";
 type BlockType = {
-  blockType: "cardBlock" | "infoBlock";
+  blockType: "cardBlock" | "infoBlock" | "textBlock";
   [key: string]: any;
 };
 
@@ -11,6 +12,8 @@ type BlockType = {
 const blockComponents = {
   cardBlock: CardBlock,
   infoBlock: InfoBlock,
+  textBlock: TextBlock,
+  projectBlock: ProjectBlock,
 } as const;
 
 // component that renders blocks based on their type

@@ -1,52 +1,140 @@
+"use client";
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { CanvasRevealEffect } from "../ui/CanvasRevealEffect";
 
 // component for rendering a card block
 const CardBlock: React.FC<any> = ({ block }) => {
   const { cards } = block;
 
   return (
-    <div className="w-full bg-green-500 flex py-10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {cards?.map((card: any, i: number) => (
-            <div
-              key={i}
-              className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden"
-            >
-              {card.image?.url && (
-                <div className="relative h-48">
-                  <Image
-                    src={card.image.url}
-                    alt={card.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                {card.description && (
-                  <p className="text-gray-600 mb-4 flex-1">
-                    {card.description}
-                  </p>
-                )}
-                {card.link && (
-                  <Link
-                    href={card.link.url}
-                    className="mt-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90"
-                  >
-                    {card.link.text}
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
+    <section className="w-full">
+      <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
+        {cards?.map((card: any, i: number) => (
+          <Card
+            key={i}
+            title={card.title}
+            des={card.description}
+            order={card.order}
+            backgroundColor={card.backgroundColor}
+            animationSpeed={card.animationSpeed}
+            animationColors={card.animationColors}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default CardBlock;
+
+const Card = ({
+  title,
+  des,
+  order,
+  backgroundColor,
+  animationSpeed,
+  animationColors,
+}: {
+  title: string;
+  des: string;
+  order: string;
+  backgroundColor: string;
+  animationSpeed: number;
+  animationColors?: { color: number[] }[];
+}) => {
+  const [hovered, setHovered] = React.useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="border border-emerald-400 group/canvas-card flex items-center justify-center
+       dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl"
+      style={{
+        background: "rgb(4,7,29)",
+        backgroundColor:
+          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+      }}
+    >
+      <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-white" />
+      <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-white" />
+      <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-white" />
+      <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-white" />
+
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="h-full w-full absolute inset-0"
+          >
+            <CanvasRevealEffect
+              animationSpeed={animationSpeed}
+              containerClassName={`${backgroundColor} rounded-3xl overflow-hidden`}
+              colors={animationColors?.map((c) => c.color) || [[0, 255, 255]]}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-20 px-10">
+        <div
+          className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] 
+          group-hover/canvas-card:opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center"
+        >
+          <AceternityIcon order={order} />
         </div>
+        <h2
+          className="dark:text-white text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100
+          relative z-10 text-black mt-4 font-bold group-hover/canvas-card:text-white 
+          group-hover/canvas-card:-translate-y-2 transition duration-200"
+        >
+          {title}
+        </h2>
+        <p
+          className="text-sm opacity-0 group-hover/canvas-card:opacity-100
+          relative z-10 mt-4 group-hover/canvas-card:text-white text-center
+          group-hover/canvas-card:-translate-y-2 transition duration-200"
+          style={{ color: "#E4ECFF" }}
+        >
+          {des}
+        </p>
       </div>
     </div>
   );
 };
 
-export default CardBlock;
+const AceternityIcon = ({ order }: { order: string }) => {
+  return (
+    <div>
+      <button className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+        <span
+          className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]
+          bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
+        />
+        <span
+          className="inline-flex h-full w-full cursor-pointer items-center 
+          justify-center rounded-full bg-slate-950 px-5 py-2 text-purple backdrop-blur-3xl font-bold text-2xl"
+        >
+          {order}
+        </span>
+      </button>
+    </div>
+  );
+};
+
+const Icon = ({ className, ...rest }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={className}
+      {...rest}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+    </svg>
+  );
+};

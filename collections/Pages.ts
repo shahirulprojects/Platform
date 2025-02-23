@@ -1,7 +1,8 @@
 import { CollectionConfig } from "payload";
 import { cardBlock } from "../blocks/cardBlock";
 import { infoBlock } from "../blocks/infoBlock";
-
+import { textBlock } from "../blocks/textBlock";
+import { projectBlock } from "../blocks/projectBlock";
 export const Pages: CollectionConfig = {
   slug: "pages",
   admin: {
@@ -29,7 +30,7 @@ export const Pages: CollectionConfig = {
     {
       name: "content",
       type: "blocks",
-      blocks: [cardBlock, infoBlock],
+      blocks: [cardBlock, infoBlock, textBlock, projectBlock],
       required: true,
     },
     {

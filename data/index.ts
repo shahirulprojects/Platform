@@ -21,9 +21,10 @@ export const gridItems = [
     title: "We're very flexible with time zone communications",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "",
+    imgClassName:
+      "absolute right-0 lg:-top-[-130px] max-md:-top-[-70px] md:w-72 w-40",
     titleClassName: "justify-start",
-    img: "",
+    img: "/earth.svg",
     spareImg: "",
   },
   {
@@ -170,34 +171,34 @@ export const companies = [
   },
 ];
 
-export const workExperience = [
+export const workExpertise = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "Web Development",
+    desc: "Crafting dynamic and interactive web applications using React.js, ensuring seamless user experiences with modern frontend technologies.",
     className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    thumbnail: "/exp1.svg", // Person with laptop icon
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
+    title: "Mobile App Development",
+    desc: "Developing high-quality, cross-platform mobile applications for iOS and Android using React Native for an optimal mobile experience.",
+    className: "md:col-span-2",
+    thumbnail: "/exp3.svg", // Floating app icon
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
+    title: "Data Analytics & Insights",
+    desc: "Providing data-driven solutions by analyzing trends and patterns to enhance business decision-making and performance.",
+    className: "md:col-span-2",
+    thumbnail: "/exp2.svg", // Bar chart/analytics icon
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "Cybersecurity & IT Solutions",
+    desc: "Ensuring robust security and IT infrastructure with cutting-edge solutions, protecting digital assets from potential threats.",
     className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    thumbnail: "/exp4.svg", // Person in a hoodie (hacker/security theme)
   },
 ];
 

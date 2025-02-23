@@ -1,3 +1,4 @@
+import Expertise from "@/components/Expertise";
 import Grid from "@/components/Grid";
 import MagicButton from "@/components/MagicButton";
 import { Spotlight } from "@/components/ui/Spotlight";
@@ -44,7 +45,7 @@ const Hero = () => {
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            A Company Where Magic Happens
+            Turning Ideas Into Innovation
           </p>
 
           {/**
@@ -58,13 +59,15 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            We are a team of experienced developers who are passionate about
-            creating amazing products.
+            We’re not just developers—we’re creators, innovators, and
+            problem-solvers. Fueled by passion and driven by excellence, we
+            craft game-changing digital experiences that inspire and transform.
+            Let’s build the future, together.
           </p>
 
           <a href="#about">
             <MagicButton
-              title="Show our work"
+              title="Learn more about us"
               icon={<FaLocationArrow />}
               position="right"
             />
@@ -72,6 +75,12 @@ const Hero = () => {
         </div>
       </div>
       <Grid />
+      <Expertise />
+      <div className="flex mt-16  items-center">
+        <p className="md:text-base text-sm md:font-normal font-light text-white">
+          Copyright © 2025 The Great Great Company
+        </p>
+      </div>
     </div>
   );
 };
