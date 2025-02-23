@@ -38,7 +38,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "We are tech enthusiasts with a passion for development.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -107,31 +107,31 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
     name: "Michael Johnson",
     title: "Director of AlphaStream Technologies",
   },

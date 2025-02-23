@@ -1,6 +1,6 @@
 import React from "react";
-import CardBlock from "./blocks/CardBlock";
-import InfoBlock from "./blocks/InfoBlock";
+import CardBlock from "./CardBlock";
+import InfoBlock from "./InfoBlock";
 
 type BlockType = {
   blockType: "cardBlock" | "infoBlock";
