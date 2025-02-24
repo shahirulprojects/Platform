@@ -66,7 +66,7 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/shahirulprojects/platform.git
+git clone https://github.com/shahirulprojects/Platform.git
 cd portfolio
 ```
 
