@@ -1,27 +1,15 @@
 "use client";
 
+import Clients from "@/components/Clients";
+import Footer from "@/components/Footer";
+import Grid from "@/components/Grid";
+import MagicButton from "@/components/MagicButton";
 import Navbar from "@/components/Navbar";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import Expertise from "@/components/Expertise";
 import dynamic from "next/dynamic";
 import { FaLocationArrow } from "react-icons/fa6";
-
-const Expertise = dynamic(() => import("@/components/Expertise"), {
-  ssr: false,
-});
-const Grid = dynamic(() => import("@/components/Grid"), { ssr: false });
-const MagicButton = dynamic(() => import("@/components/MagicButton"), {
-  ssr: false,
-});
-const Spotlight = dynamic(
-  () => import("@/components/ui/Spotlight").then((mod) => mod.Spotlight),
-  { ssr: false }
-);
-const TextGenerateEffect = dynamic(
-  () =>
-    import("@/components/ui/TextGenerateEffect").then(
-      (mod) => mod.TextGenerateEffect
-    ),
-  { ssr: false }
-);
 
 const Hero = () => {
   return (
@@ -97,11 +85,8 @@ const Hero = () => {
       </div>
       <Grid />
       <Expertise />
-      <div className="flex mt-16  items-center">
-        <p className="md:text-base text-sm md:font-normal font-light text-white">
-          Copyright © 2025 The Great Great Company
-        </p>
-      </div>
+      <Clients />
+      <Footer />
     </div>
   );
 };

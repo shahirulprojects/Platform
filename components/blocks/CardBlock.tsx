@@ -48,7 +48,7 @@ const Card = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="border border-blue-500 group/canvas-card flex items-center justify-center
+      className="border border-yellow-400 group/canvas-card flex items-center justify-center
        dark:border-white/[0.2] max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl"
       style={{
         background: "rgb(4,7,29)",
@@ -92,8 +92,8 @@ const Card = ({
           {title}
         </h2>
         <p
-          className="text-sm opacity-0 group-hover/canvas-card:opacity-100
-          relative z-10 mt-4 group-hover/canvas-card:text-white text-center
+          className="max-sm:text-sm text-lg text-justify opacity-0 group-hover/canvas-card:opacity-100
+          relative z-10 mt-4 group-hover/canvas-card:text-white
           group-hover/canvas-card:-translate-y-2 transition duration-200"
           style={{ color: "#E4ECFF" }}
         >

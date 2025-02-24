@@ -9,7 +9,7 @@ const Clients = () => {
   return (
     <section id="testimonials" className="py-20">
       <h1 className="heading">
-        Kind words from
+        Kind words from our
         <span className="text-purple"> satisfied clients</span>
       </h1>
 

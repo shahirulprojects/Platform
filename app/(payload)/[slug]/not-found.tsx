@@ -13,7 +13,7 @@ export default function NotFound() {
         </div>
         <Link
           href="/"
-          className="inline-block bg-black text-white text-lg font-bold px-10 py-5 rounded-lg hover:bg-gray-800 transition-colors border-2 border-white border-dashed"
+          className="inline-block bg-black text-white text-lg font-bold px-10 py-5 rounded-lg hover:bg-gray-800 transition-colors border-2 border-white"
         >
           Rescue Me!
         </Link>

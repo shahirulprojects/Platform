@@ -10,7 +10,8 @@ export const gridItems = [
     id: 1,
     title: "We prioritize client collaboration, fostering open communication ",
     description: "",
-    className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
+    className:
+      "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh] border border-emerald-400",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     img: "/b1.svg",
@@ -20,7 +21,8 @@ export const gridItems = [
     id: 2,
     title: "We're very flexible with time zone communications",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    className:
+      "lg:col-span-2 md:col-span-3 md:row-span-2 border border-pink-400",
     imgClassName:
       "absolute right-0 lg:-top-[-130px] max-md:-top-[-70px] md:w-72 w-40",
     titleClassName: "justify-start",
@@ -31,7 +33,7 @@ export const gridItems = [
     id: 3,
     title: "Our tech stack",
     description: "We constantly try to improve",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2 border-violet-400",
     imgClassName: "",
     titleClassName: "justify-center",
     img: "",
@@ -41,7 +43,7 @@ export const gridItems = [
     id: 4,
     title: "We are tech enthusiasts with a passion for development.",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1 border-blue-400",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "/grid.svg",
@@ -52,7 +54,7 @@ export const gridItems = [
     id: 5,
     title: "Currently building a JS Animation library",
     description: "The Inside Scoop",
-    className: "md:col-span-3 md:row-span-2",
+    className: "md:col-span-3 md:row-span-2 border-red-400",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
     img: "/b5.svg",
@@ -62,7 +64,7 @@ export const gridItems = [
     id: 6,
     title: "Do you want to start a project together?",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1 border-yellow-400",
     imgClassName: "",
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
     img: "",
@@ -108,55 +110,61 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "The Great Great Company played a key role in optimizing our platform’s performance and scalability. Their deep technical knowledge and problem-solving mindset helped us tackle challenges efficiently. Their team’s dedication and professionalism made this collaboration a true success.",
+    name: "Liam Anderson",
+    title: "Senior Software Engineer at Hostinger",
+    img: "/profile1.jpg",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "The Great Great Company transformed our platform with their exceptional development skills. Their ability to deliver sleek, high-performance solutions while maintaining an intuitive user experience truly set them apart. Their professionalism and commitment to excellence made our collaboration effortless and rewarding.",
+    name: "Olivia Carter",
+    title: "Product Manager at Cloudinary",
+    img: "/profile2.jpg",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "From start to finish, working with The Great Great Company was a seamless experience. They not only understood our vision but also enhanced it with innovative solutions. Their technical expertise and commitment to deadlines helped us scale faster than expected. Highly recommended!",
+    name: "Sophia Martinez",
+    title: "Head of Engineering at Appwrite",
+    img: "/profile3.jpg",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "The Great Great Company delivered a robust, scalable solution that exceeded our expectations. Their problem-solving abilities, technical excellence, and proactive communication made a significant impact on our project. I highly appreciate their dedication and expertise.",
+    name: "David Chen",
+    title: "Lead Developer at Stream",
+    img: "/profile4.jpg",
   },
   {
     quote:
-      "Collaborating with The Great Great Company was an absolute pleasure. Their professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. The Great Great Company's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, The Great Great Company is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Our experience with The Great Great Company was nothing short of outstanding. They brought creativity and innovation to every aspect of development, ensuring a smooth, efficient, and visually stunning end product. Their team is truly a game-changer in the industry!",
+    name: "Emma Patel",
+    title: "Director of Technology at Docker",
+    img: "/profile5.jpg",
   },
 ];
 
 export const companies = [
   {
     id: 1,
+    name: "HOSTINGER",
+    img: "/host.svg",
+    nameImg: "/hostName.svg",
+  },
+  {
+    id: 2,
     name: "cloudinary",
     img: "/cloud.svg",
     nameImg: "/cloudName.svg",
   },
   {
-    id: 2,
+    id: 3,
     name: "appwrite",
     img: "/app.svg",
     nameImg: "/appName.svg",
   },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
-  },
+
   {
     id: 4,
     name: "stream",
@@ -206,13 +214,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/",
   },
   {
     id: 2,
     img: "/twit.svg",
+    link: "https://x.com/",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://linkedin.com/",
   },
 ];
