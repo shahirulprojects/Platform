@@ -16,6 +16,7 @@ export async function GET() {
           equals: "published",
         },
       },
+      sort: "createdAt",
     });
 
     if (!pagesQuery.docs || pagesQuery.docs.length === 0) {
@@ -23,11 +24,12 @@ export async function GET() {
       return NextResponse.json([], { status: 200 });
     }
 
-    // ensure we're returning an array of pages with title and slug
+    // ensure we're returning an array of pages with title, slug, and createdAt
     const pages = pagesQuery.docs
       .map((doc) => ({
         title: doc.title || "Untitled",
         slug: doc.slug || "",
+        createdAt: doc.createdAt,
       }))
       .filter((page) => page.slug); // only return pages with valid slugs
 
