@@ -1,10 +1,26 @@
-import Expertise from "@/components/Expertise";
-import Grid from "@/components/Grid";
-import MagicButton from "@/components/MagicButton";
-import { Spotlight } from "@/components/ui/Spotlight";
-import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+"use client";
 
+import dynamic from "next/dynamic";
 import { FaLocationArrow } from "react-icons/fa6";
+
+const Expertise = dynamic(() => import("@/components/Expertise"), {
+  ssr: false,
+});
+const Grid = dynamic(() => import("@/components/Grid"), { ssr: false });
+const MagicButton = dynamic(() => import("@/components/MagicButton"), {
+  ssr: false,
+});
+const Spotlight = dynamic(
+  () => import("@/components/ui/Spotlight").then((mod) => mod.Spotlight),
+  { ssr: false }
+);
+const TextGenerateEffect = dynamic(
+  () =>
+    import("@/components/ui/TextGenerateEffect").then(
+      (mod) => mod.TextGenerateEffect
+    ),
+  { ssr: false }
+);
 
 const Hero = () => {
   return (
@@ -59,10 +75,10 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            We’re not just developers—we’re creators, innovators, and
+            We're not just developers—we're creators, innovators, and
             problem-solvers. Fueled by passion and driven by excellence, we
             craft game-changing digital experiences that inspire and transform.
-            Let’s build the future, together.
+            Let's build the future, together.
           </p>
 
           <a href="#about">
