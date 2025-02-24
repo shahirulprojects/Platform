@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/Navbar";
 import dynamic from "next/dynamic";
 import { FaLocationArrow } from "react-icons/fa6";
 
@@ -56,6 +57,10 @@ const Hero = () => {
           className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
         />
+      </div>
+
+      <div className="absolute top-0 right-0 p-4 z-20">
+        <Navbar />
       </div>
 
       <div className="flex justify-center relative my-20 z-10">

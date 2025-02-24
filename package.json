@@ -15,6 +15,7 @@
     "@payloadcms/payload-cloud": "^3.24.0",
     "@payloadcms/richtext-lexical": "^3.24.0",
     "@payloadcms/richtext-slate": "^3.24.0",
+    "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "@react-three/drei": "^9.0.0",
     "@react-three/fiber": "^9.0.0",
