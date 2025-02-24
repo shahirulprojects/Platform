@@ -89,12 +89,12 @@ const NavContent = () => {
               <Image
                 src={item.imgURL}
                 alt={item.label}
-                width={20}
-                height={20}
+                width={30}
+                height={30}
                 className={`${isActive ? "" : "invert-colors"}`}
               />
               <p
-                className={`${isActive ? "font-bold" : "font-medium"} text-xl max-sm:text-sm`}
+                className={`${isActive ? "font-bold" : "font-medium"} text-xl md:text-2xl max-sm:text-sm`}
               >
                 {item.label}
               </p>
@@ -119,14 +119,14 @@ const Navbar = () => {
       </SheetTrigger>
       <SheetContent side="left" className="bg-main border-x border-emerald-400">
         <SheetTitle className="hidden">Navigation Menu</SheetTitle>
-        <Link href="/" className="flex items-center gap-1">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/platformlogo.svg"
-            width={40}
-            height={40}
+            width={45}
+            height={45}
             alt="The Great Great Company"
           />
-          <p className="h2-bold text-white font-bold text-xl max-sm:text-sm">
+          <p className="h2-bold text-white font-bold text-xl md:text-2xl max-sm:text-sm">
             The Great Great Company
           </p>
         </Link>
