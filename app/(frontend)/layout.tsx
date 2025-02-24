@@ -31,6 +31,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="icon" href="/platformlogo.svg" />
+      </head>
       <body>
         <ThemeProvider
           attribute="class"

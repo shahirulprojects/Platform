@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "The Great Great Company",
   description: "The Great Great Company is a company that makes great products",
+  icons: {
+    icon: "/platformlogo.svg",
+  },
 };
 
 export default function RootLayout({

@@ -6,6 +6,8 @@ import CardBlock from "@/components/blocks/CardBlock";
 import InfoBlock from "@/components/blocks/InfoBlock";
 import TextBlock from "@/components/blocks/TextBlock";
 import ProjectBlock from "@/components/blocks/ProjectBlock";
+import Image from "next/image";
+import Link from "next/link";
 // define block types
 type Block = {
   blockType: string;
@@ -54,6 +56,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return (
       <div className="min-h-screen p-10 w-full">
+        <div className="flex top-0 right-0">
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/platformlogo.svg" alt="logo" width={80} height={80} />
+            <h1 className="text-white text-5xl font-bold">
+              The Great Great Company
+            </h1>
+          </Link>
+        </div>
         <h1 className="text-purple text-5xl font-bold mt-10">{page.title}</h1>
 
         {/* render blocks based on their type */}
