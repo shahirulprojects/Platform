@@ -1,7 +1,14 @@
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 import { NextResponse } from "next/server";
+import {
+  REST_POST,
+  REST_DELETE,
+  REST_PUT,
+  REST_PATCH,
+} from "@payloadcms/next/routes";
 
+// handle GET requests to fetch published pages for navigation
 export async function GET() {
   try {
     const payload = await getPayload({
@@ -20,7 +27,7 @@ export async function GET() {
     });
 
     if (!pagesQuery.docs || pagesQuery.docs.length === 0) {
-      console.log("No pages found in the database");
+      // return empty array instead of null for better client-side handling
       return NextResponse.json([], { status: 200 });
     }
 
@@ -33,12 +40,18 @@ export async function GET() {
       }))
       .filter((page) => page.slug); // only return pages with valid slugs
 
-    return NextResponse.json(pages);
+    return NextResponse.json(pages, { status: 200 });
   } catch (error) {
-    console.error("Error in /api/pages:", error);
+    console.error("Error fetching pages:", error);
     return NextResponse.json(
-      { error: "Failed to fetch pages" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
+
+// use PayloadCMS's built-in REST handlers for all operations
+export const POST = REST_POST(configPromise);
+export const DELETE = REST_DELETE(configPromise);
+export const PUT = REST_PUT(configPromise);
+export const PATCH = REST_PATCH(configPromise);
