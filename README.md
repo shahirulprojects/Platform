@@ -22,7 +22,7 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built with Next.js, Platform is a feature-rich demo website for an imaginary company, designed to showcase seamless integration with Payload for efficient content management. It harnesses the power of Three.js to create immersive 3D experiences, utilizes Framer Motion for fluid and engaging animations, and employs Tailwind CSS to ensure a modern, responsive, and visually appealing design. This combination of technologies delivers a highly interactive and polished user experience, making Platform an ideal representation of cutting-edge web development practices.
+Built with Next.js, Platform is a demo website for an imaginary company, showcasing seamless Payload integration for content management. It features immersive 3D experiences with Three.js, fluid animations with Framer Motion, and a modern, responsive design with Tailwind CSS to deliver a highly interactive and polished user experience.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
